@@ -1,0 +1,276 @@
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: var(--background);
+  padding: 1rem;
+  color: var(--text);
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+/* Grid de cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-content: start;
+  background: var(--background);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Card individual */
+.card {
+  background: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  background-color: var(--surface-hover);
+}
+
+/* Destaque para ocorrências ativas */
+.cardActive {
+  border-color: var(--accent);
+  animation: alertPulse 0.9s infinite;
+}
+
+@keyframes alertPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px var(--accent),
+      0 0 8px var(--accent);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 3px var(--accent),
+      0 0 28px var(--accent);
+  }
+}
+
+
+/* Cabeçalho do card */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* Badge de status */
+.statusBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.statusActive {
+  background: var(--active);
+}
+
+.statusProgress {
+  background: var(--progress);
+}
+
+.statusFinished {
+  background: var(--finished);
+}
+
+.statusCancelled {
+  background: var(--cancelled);
+}
+
+/* Nome (ID curto) */
+.name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Linha de informações */
+.infoRow {
+  display: grid;
+  width: 100%;
+  grid-template-rows: auto auto;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.infoLabel {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.infoValue {
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+/* Mapa em miniatura */
+.mapWrapper {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--surface);
+}
+
+/* Rodapé do card */
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Badge de pontos */
+.pointsBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--surface-hover);
+  color: #fff;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.pointsBadge svg {
+  font-size: 1rem;
+}
+
+/* Botões */
+.attendButton,
+.finishButton {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.attendButton:hover,
+.finishButton:hover {
+  opacity: 0.9;
+}
+
+.attendButton:disabled,
+.finishButton:disabled {
+  background: var(--surface);
+  color: var(--text);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mensagens de estado (loading, erro, vazio) */
+.stateMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--text-muted);
+  background-color: var(--background);
+  text-align: center;
+  padding: 2rem;
+}
+/* modo lista: linhas compactas, ocupando toda a largura */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-content: start;
+  background: var(--background);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.6rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* cabeçalho (status + id) com largura fixa, sem esticar */
+.cardList .cardHeader {
+  flex: 0 0 180px;
+  gap: 0.5rem;
+}
+
+/* infos ocupam o espaço restante, distribuídas de ponta a ponta */
+.cardList .infoRow {
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.cardList .infoItem,
+.cardList .infoRow > div {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* rodapé fixo à direita */
+.cardList .cardFooter {
+  flex: 0 0 auto;
+  gap: 1rem;
+}
+
+.cardList .pointsBadge {
+  white-space: nowrap;
+}
+
+.cardList .attendButton {
+  white-space: nowrap;
+}

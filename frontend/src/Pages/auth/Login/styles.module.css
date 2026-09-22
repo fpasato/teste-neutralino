@@ -1,0 +1,131 @@
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+  padding: 1rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.form {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.2s ease;
+}
+
+.form:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+.title {
+  color: var(--text);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: -0.2rem;
+  margin-bottom: 1.8rem;
+  font-size: 0.95rem;
+}
+
+.label {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.label input,
+.label :global(.city-selector) {
+  display: block;
+  width: 100%;
+  margin-top: 0.3rem;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.label input:focus,
+.label :global(.city-selector):focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(123, 25, 26, 0.25);
+}
+
+.label input::placeholder {
+  color: var(--text-muted);
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--accent);
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, opacity 0.2s;
+  margin-top: 0.5rem;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: #a02021;
+  transform: scale(1.01);
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.footerText {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.footerText a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.footerText a:hover {
+  color: #a02021;
+  text-decoration: underline;
+}
+
+.label :global(.city-selector) {
+  /* herda os estilos do input */
+}

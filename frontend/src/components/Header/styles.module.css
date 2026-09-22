@@ -1,0 +1,65 @@
+.header {
+  background-color: var(--background);
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 76px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  height: 100%;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+
+.timeContainer {
+  width: auto;
+  min-width: 130px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-right: 4px;
+
+  & h3 {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin: 0;
+    font-variant-numeric:tabular-nums;
+  }
+
+  & p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .1em;
+  }
+
+  & svg {
+    font-size: 16px;
+    color: var(--text-muted);
+  }
+}
+
+.timeItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

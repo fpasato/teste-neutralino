@@ -1,0 +1,381 @@
+/* ============================================
+   MAPA DE OCORRÊNCIAS – ESTILOS GERAIS
+   ============================================ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* garante altura total da tela */
+  background-color: var(--background);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Cabeçalho com título e contadores */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.headerRow h1 {
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: var(--text);
+  margin: 0.25rem 0 0 0;
+  font-size: 0.95rem;
+}
+
+.counters {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.counterBadge {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+}
+
+/* ============================================
+   LAYOUT PRINCIPAL: LISTA + MAPA
+   ============================================ */
+
+.mapLayout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  /* essencial para que o mapa ocupe o restante */
+  gap: 1rem;
+}
+
+/* Lista de ocorrências (painel esquerdo) */
+.occurrenceList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 280px;
+  min-width: 280px;
+  background: var(--background);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.occurrenceItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.occurrenceItem:hover {
+  background: var(--surface);
+}
+
+.occurrenceItemActive {
+  background: var(--surface);
+  border-left: 4px solid #3b82f6;
+}
+
+.occurrenceStatus {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Bolinha de status */
+.statusDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Mensagem de lista vazia / carregando */
+.occurrenceEmpty {
+  padding: 1.5rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* Container do mapa */
+.mapContainer {
+  flex: 1;
+  min-width: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Mapa Leaflet */
+.leafletMap {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  /* fallback para containers sem altura definida */
+  background: #d4e0ec;
+  /* cor de fundo enquanto os tiles carregam */
+}
+
+
+.sosMarkerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+}
+
+.sosMarkerIcon span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s;
+}
+
+.sosMarkerIcon span:hover {
+  transform: scale(1.2);
+}
+
+/* ============================================
+   POPUP PERSONALIZADO
+   ============================================ */
+
+.popupContent {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  min-width: 200px;
+}
+
+.popupContent strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.popupContent p {
+  margin: 0.2rem 0;
+  color: #475569;
+}
+
+.popupActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.popupActions button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.popupActions button:hover {
+  background: #1d4ed8;
+}
+
+.popupActions button:last-child {
+  background: #f59e0b;
+}
+
+.popupActions button:last-child:hover {
+  background: #d97706;
+}
+
+
+/* Container dos filtros de escopo */
+.scopeFilters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* Estilo base para os selects */
+.scopeFilters select {
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--surface);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-width: 180px;
+  appearance: none; 
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px; 
+}
+
+.scopeFilters select:hover {
+  border-color: #9ca3af;
+}
+
+.scopeFilters select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Select desabilitado (supervisor) */
+.scopeFilters select:disabled {
+  background-color: var(--surface);
+  color: #6b7280;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+  opacity: 1;
+}
+
+/* Contêiner dos contadores e toggle */
+.counters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Toggle de tipo de mapa */
+.mapTypeToggle {
+  display: flex;
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.mapTypeButton,
+.mapTypeButtonActive {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  background-color: transparent;
+  color: #4b5563;
+  
+  & svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.mapTypeButton:hover {
+  background-color: #e5e7eb;
+}
+
+.mapTypeButtonActive {
+  background-color: var(--surface-hover);
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 768px) {
+  .scopeFilters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .scopeFilters select {
+    width: 100%;
+    min-width: auto;
+  }
+  .counters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .mapTypeToggle {
+    width: 100%;
+  }
+  .mapTypeButton,
+  .mapTypeButtonActive {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+.sosMarkerIcon {
+  background: transparent;
+  border: none;
+}
+
+.pinWrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.pinWrapper svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pulseRing {
+  position: absolute;
+  bottom: 0;              /* onda começa na base do pino */
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;     /* centraliza horizontalmente */
+  border-radius: 50%;
+  background: rgb(229, 56, 53);
+  border: 2px solid rgb(229, 56, 53);
+  animation: pulseRing 1.5s infinite;
+  pointer-events: none;  
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

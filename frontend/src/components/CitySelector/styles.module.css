@@ -1,0 +1,86 @@
+/* components/CitySelector/styles.module.css */
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.wrapper input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.wrapper input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(123, 25, 26, 0.25);
+}
+
+.wrapper input::placeholder {
+  color: var(--text-muted);
+}
+
+.loading {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  padding-left: 0.2rem;
+}
+
+.resultsList {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.resultsList li {
+  padding: 0.6rem 0.9rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.resultsList li:last-child {
+  border-bottom: none;
+}
+
+.resultsList li:hover {
+  background-color: var(--surface-hover);
+  color: var(--text);
+}
+
+/* scroll personalizado (opcional) */
+.resultsList::-webkit-scrollbar {
+  width: 6px;
+}
+.resultsList::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+  border-radius: 0 0 8px 8px;
+}
+.resultsList::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 8px;
+}
+.resultsList::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

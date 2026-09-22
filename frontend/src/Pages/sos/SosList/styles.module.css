@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.filterBar {
+  background-color: var(--background);
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 1rem 0;
+  flex-shrink: 0;
+  background-color: var(--background);
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  color: var(--text);
+  opacity: 0.6;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tabActive {
+  opacity: 1 !important;
+  border-bottom-color: var(--primary) !important;
+}
+
+.contentBody {
+  flex: 1;
+  overflow: auto;
+}

@@ -1,0 +1,522 @@
+.container {
+  background-color: var(--background);
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: white;
+}
+
+/* FILTROS */
+.filterBar {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  background-color: var(--surface);
+  padding: 1rem;
+  border-radius: 0.6rem;
+  flex-wrap: wrap;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.geoFilters,
+.dateFilters {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
+.dateField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dateField label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.dateField input,
+.dateField select {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+.dateField input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.rangeError {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* INDICADOR DE REFRESH */
+.refreshDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3b82f6;
+  display: inline-block;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* CARDS DE RESUMO */
+.rowBlocks {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  height: 100px;
+}
+
+.block {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  align-items: center;
+  row-gap: 0.25rem;
+  background-color: var(--surface);
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.6rem;
+}
+
+.blockTitle {
+  grid-column: 1 / -1;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.blockValue {
+  font-size: 1.8rem;
+  color: var(--text);
+}
+
+.metricRow {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.metricRow svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--accent);
+}
+
+.totalGeral,
+.emAndamento,
+.finalizadasHoje,
+.tempoMedio,
+.canceladas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+/* Ícones específicos */
+.totalGeral svg {
+  background-color: var(--accent);
+  border-radius: 50%;
+  padding: 0.4rem;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgb(235, 8, 8);
+}
+
+.emAndamento svg {
+  color: #ffffff;
+  background-color: var(--active);
+  padding: 0.4rem;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgb(0, 140, 255);
+}
+
+.finalizadasHoje svg {
+  color: #ffffff;
+  background-color: var(--finished);
+  border-radius: 50%;
+  padding: 0.4rem;
+  box-shadow: 0 0 10px rgb(34, 197, 94);
+}
+
+.tempoMedio svg {
+  color: #ffffff;
+  background-color: rgba(111, 17, 225, 0.837);
+  border-radius: 50%;
+  padding: 0.4rem;
+  box-shadow: 0 0 10px rgb(116, 11, 245);
+}
+
+.canceladas svg {
+  color: #ffffff;
+  background-color: var(--cancelled);
+  border-radius: 50%;
+  padding: 0.4rem;
+  box-shadow: 0 0 10px rgb(239, 156, 68);
+}
+
+/* Variação */
+.variacao {
+  grid-row: 3;
+  grid-column: 1;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.85rem;
+  padding-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.positivo {
+  color: #16a34a !important;
+}
+
+.negativo {
+  color: #dc2626 !important;
+}
+
+/* GRÁFICOS DE LINHA E HEATMAP*/
+.graphContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  align-items: stretch;
+  width: 100%;
+  background: var(--background);
+  border-radius: 0.5rem;
+  min-height: 320px;
+}
+
+.graph {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--background);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  overflow: hidden;
+}
+
+.graph h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Heatmap */
+.heatmapWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.heatmapHeaderRow,
+.heatmapRow {
+  display: flex;
+  gap: 4px;
+  align-items: stretch;
+  flex: 1;
+}
+
+.heatmapCorner {
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.heatmapHourLabel {
+  flex: 1;
+  min-width: 0;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  color: #888;
+  text-align: center;
+}
+
+.heatmapDayLabel {
+  width: 40px;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: #555;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.heatmapCell {
+  flex: 1;
+  min-width: 0;
+  border-radius: 3px;
+}
+
+/* CONTAINER DONUT + RECENTES */
+.subInfoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  flex: 1;
+  /* ocupa o espaço restante verticalmente */
+  min-height: 0;
+  /* permite encolhimento */
+}
+
+.donutBlock {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  min-height: 0;
+}
+
+.donutBlock h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.donutRow {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.donutChartWrapper {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.donutChartWrapper>* {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+.donutLegend {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  overflow-y: visible;
+  justify-content: center;
+}
+
+.donutLegend li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+  /* evita quebra de texto */
+}
+
+.donutLegend li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(4px);
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px currentColor;
+  flex-shrink: 0;
+}
+
+/* ---------- LISTA DE RECENTES ---------- */
+
+.recentBlock {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  min-height: 0;
+}
+
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.recentHeader h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.recentHeader button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.recentHeader button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.recentList {
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  overflow-y: auto;
+}
+
+.recentList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3rem;
+}
+
+
+.statusIcon {
+  color: var(--text);
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.statusActiveIcon {
+  background-color: var(--accent);
+  filter: drop-shadow(0px 0px 6px var(--accent));
+  padding: 0.25rem;
+  border-radius: 50%;
+}
+
+.statusFinishedIcon {
+  background-color: var(--finished);
+  filter: drop-shadow(0px 0px 6px var(--finished));
+  padding: 0.25rem;
+  border-radius: 50%;
+}
+
+.statusInProgressIcon {
+  background-color: var(--active);
+  filter: drop-shadow(0px 0px 6px var(--active));
+  padding: 0.25rem;
+  border-radius: 50%;
+}
+
+.statusCancelledIcon {
+  background-color: var(--cancelled);
+  filter: drop-shadow(0px 0px 6px var(--cancelled));
+  padding: 0.25rem;
+  border-radius: 50%;
+}
+
+
+.statusActive {
+  color: #fff;
+  background-color: var(--accent);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.3rem;
+  text-shadow: #555 0 0 5px;
+}
+
+.statusFinished {
+  color: #fff;
+  background-color: var(--finished);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.3rem;
+  text-shadow: #555 0 0 5px;
+}
+
+.statusInProgress {
+  color: #fff;
+  background-color: var(--progress);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.3rem;
+  text-shadow: #555 0 0 5px;
+}
+
+.statusCancelled {
+  color: #fff;
+  background-color: var(--cancelled);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.3rem;
+  text-shadow: #555 0 0 5px;
+}

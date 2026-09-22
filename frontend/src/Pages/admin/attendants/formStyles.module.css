@@ -1,0 +1,237 @@
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto; /* scroll vertical do conteúdo do modal */
+  padding: 0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  color: var(--text);
+  position: relative; /* para referência do combobox (mas o portal resolve melhor) */
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.closeButton:hover {
+  color: var(--text);
+  background-color: var(--surface-hover);
+}
+
+.title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin: 0 0 1rem 0;
+  padding: 0 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.field span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.field input,
+.field select {
+  padding: 0.4rem 0.75rem; /* altura reduzida */
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--text-muted);
+}
+
+.field input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.field select {
+  cursor: pointer;
+  appearance: auto;
+  padding: 0.4rem 0.75rem; /* mesma altura */
+}
+
+.field select option {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.comboboxWrapper {
+  position: relative;
+}
+
+.comboboxWrapper input {
+  width: 100%;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+
+.clearButton {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.clearButton:hover {
+  color: var(--text);
+}
+
+/* A lista de sugestões será renderizada via portal com posicionamento fixo */
+.comboboxListPortal {
+  position: fixed;        /* para flutuar sobre tudo */
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 2000;          /* acima do modal (z-index 1000) */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  min-width: 200px;
+}
+
+.comboboxListPortal li button {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.comboboxListPortal li button:hover {
+  background-color: var(--surface-hover);
+}
+
+.comboboxEmpty {
+  padding: 0.5rem 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.errorMessage {
+  color: var(--cancelled);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.secondaryButton {
+  padding: 0.4rem 1rem;   /* botão menos alto */
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.secondaryButton:hover {
+  background-color: var(--surface-hover);
+  color: var(--text);
+}
+
+.primaryButton {
+  padding: 0.4rem 1.25rem; /* botão menos alto */
+  border-radius: 4px;
+  border: none;
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.primaryButton:hover:not(:disabled) {
+  background-color: #951f20;
+}
+
+.primaryButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

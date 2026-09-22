@@ -1,0 +1,371 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 1.2rem 1.8rem;
+    color: var(--text);
+    background: var(--background);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Botão de voltar */
+.backButton {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.25rem 0;
+    margin-bottom: 0.4rem;
+    transition: color 0.15s;
+    flex-shrink: 0;
+}
+
+.backButton:hover {
+    color: var(--text);
+}
+
+h4{
+    color: var(--text-muted);
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    flex: 1;
+    min-height: 0;
+
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mapColumn {
+  min-height: 0;
+  min-width: 0;
+}
+
+.mapWrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--background-secondary);
+}
+
+
+.sidePanel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 0;
+    min-width: 0;
+    height: 100%;
+    max-height: 100%;
+    /* impede que ultrapasse o grid */
+    overflow: hidden !important;
+    /* garante que não haja scroll aqui */
+}
+
+/* Container dos painéis de informação (2 colunas) */
+.infoContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    min-height: 0;
+}
+
+
+/* Painel individual de informações */
+.infoPanel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--surface);
+    padding: 1rem;
+    border-radius: 10px;
+    gap: 1rem;
+}
+
+/* Cabeçalho do painel de info (nome + status) */
+.infoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.name {
+    font-size: 1.3rem;
+    margin: 0;
+    color: var(--text);
+}
+
+/* Status badge */
+.statusBadge {
+    align-self: flex-start;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    background: var(--surface-hover);
+    color: var(--text-secondary);
+}
+
+.status_active {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--active);
+}
+
+.status_in_progress {
+    background: rgba(217, 119, 6, 0.15);
+    color: var(--progress);
+}
+
+.status_finished {
+    background: rgba(22, 163, 74, 0.15);
+    color: var(--finished);
+}
+
+.status_cancelled {
+    background: rgba(220, 38, 38, 0.15);
+    color: var(--cancelled);
+}
+
+/* Lista de itens do painel */
+.infoList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.8rem;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.infoItem {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.25rem;
+}
+
+.infoItem span {
+    color: var(--text);
+}
+
+/* Container das ações (ocupa as duas colunas do infoContainer) */
+.actionsContainer {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface);
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.vehicleStatus {
+    display: flex;
+    flex-direction:  row;
+    gap: 0.5rem;
+}
+
+.actionButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+/* Botões */
+.dispatchButton,
+.finishButton,
+.attendButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    object-fit: cover;
+}
+
+.attendButton {
+    background: var(--active);
+    color: #fff;
+}
+
+.dispatchButton {
+    background: var(--accent);
+    color: #fff;
+}
+
+.dispatchButton:disabled {
+    background: var(--surface-hover);
+    color: var(--text-muted);
+    cursor: default;
+}
+
+.finishButton {
+    background: var(--finished);
+    color: #fff;
+}
+
+.finishButton:hover,
+.attendButton:hover,
+.dispatchButton:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+/* Mensagens de estado */
+.readOnlyMessage {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    text-align: center;
+}
+
+.finishedMessage {
+    padding: 0.8rem 1rem;
+    background: var(--surface-hover);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    text-align: center;
+}
+
+.stateMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    background: var(--background);
+    height: 100vh;
+}
+
+/* Seção da tabela de coordenadas (agora com altura flexível e scroll interno) */
+.panelCard {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+    /* ocupa o espaço restante no sidePanel */
+    min-height: 0;
+    /* permite encolher para ativar scroll interno */
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    margin: 0;
+    color: var(--text);
+    flex-shrink: 0;
+}
+
+.sectionTitle svg {
+    color: var(--text-muted);
+}
+
+.emptyLocations {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 0.5rem 0;
+}
+
+/* Wrapper da tabela com scroll próprio */
+.tableWrapper {
+    flex: 1;
+    overflow-y: auto;
+    max-height: none;
+    border-radius: 8px;
+    /* remove limite fixo, usa a altura disponível */
+}
+
+.coordsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.coordsTable thead th {
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    padding: 0.5rem 0.4rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+    z-index: 1;
+}
+
+.coordsTable tbody td {
+    padding: 0.45rem 0.4rem;
+    border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+}
+
+.coordsTable tbody tr:hover {
+    background: var(--surface-hover);
+}
+
+
+/* Scrollbar sutil (apenas na tabela agora) */
+.tableWrapper::-webkit-scrollbar {
+    width: 5px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+}
+
+.coordsTable tbody tr:nth-child(even) {
+  background: var(--surface); 
+}
+
+.coordsTable tbody tr:hover {
+  background: var(--surface-hover);
+}

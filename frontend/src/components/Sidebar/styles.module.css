@@ -1,0 +1,258 @@
+/* ============================================================
+   Sidebar — container
+   ============================================================ */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 260px;
+  height: 100vh;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+
+  background-color: var(--background);
+  color: var(--text);
+  border-right: 1px solid var(--border);
+
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  transition: width 0.2s ease;
+}
+
+.menuContainer,
+.adminSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.menuContainer h3,
+.adminSection h3 {
+  margin: 0;
+  padding: 0.5rem 0.75rem 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   Navegação (botões)
+   ============================================================ */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.navLink svg {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.navLink:hover:not(:disabled) {
+  background-color: var(--surface-hover);
+  color: var(--text);
+}
+
+.navLink:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Estado ativo (adicione className ativa via useLocation quando quiser) */
+.navLink.active {
+  background-color: var(--surface-hover);
+  color: var(--text);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* Desabilitado — agora funciona de verdade, pois é <button> */
+.navLink:disabled,
+.navLink.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: var(--text-muted);
+  transform: none;
+}
+
+.navLink:disabled:hover,
+.navLink.disabled:hover {
+  background-color: transparent;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   Rodapé — usuário + logout + versão
+   ============================================================ */
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  padding: 0.75rem;
+  margin-top: 1rem;
+
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.userArea {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+  min-width: 0;
+}
+
+.avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.statusDot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+  background: var(--finished);
+  border: 2px solid var(--surface);
+  transition: background 0.2s ease;
+}
+
+.statusDot[data-active="false"] {
+  background: var(--text-secondary);
+}
+
+.userText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.userName {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userRole {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inactiveBadge {
+  color: var(--cancelled);
+  margin-left: 0.2rem;
+}
+
+/* ============================================================
+   Botão de logout
+   ============================================================ */
+.logoutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  width: 100%;
+  padding: 0.6rem 1rem;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.logoutButton svg {
+  font-size: 1.1rem;
+}
+
+.logoutButton:hover {
+  background-color: rgba(220, 105, 38, 0.12);
+  border-color: var(--cancelled);
+  color: var(--cancelled);
+}
+
+.logoutButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Versão
+   ============================================================ */
+.version {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+}

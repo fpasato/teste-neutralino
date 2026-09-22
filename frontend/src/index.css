@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'twist';
+  src: url('./assets/fonts/TwistSans_Regular.otf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  font-family: 'twist', sans-serif;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  outline: none;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --background: #0a0b0d;          
+  --background-secondary: #111418; 
+  --surface: #0b0d10;              
+  --surface-hover: #1e242b;        
+  --border: rgba(255, 255, 255, 0.145); 
+  --text: #F8FAFC;
+  --text-secondary: #94A3B8;       
+  --text-muted: #7c9ecd;           
+  --accent: #e72727;   
+
+  --active: #1b5ff1;
+  --progress: #dabc28;
+  --finished: #20da67;
+  --cancelled: #dc6926;
+}
+
+
+/* 
+  --background: #0D1013;
+  --background-secondary: #4343497e;
+  --surface: #14181C;
+  --surface-hover: #2A3445;
+  --border: rgba(255, 255, 255, 0.06);
+  --text: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #64748B;
+  --accent: #7b191a;
+
+
+  --active: #2563EB;
+  --progress: #87751b;
+  --finished: #126230;
+  --cancelled: #dc6926; */
