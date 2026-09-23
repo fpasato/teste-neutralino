@@ -1,0 +1,2 @@
+
+cd frontend && npm run build && rm -rf ../resources/* && cp -r dist/* ../resources/ && cd .. && neu build --release --embed-resources

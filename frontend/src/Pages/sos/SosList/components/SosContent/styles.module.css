@@ -27,14 +27,14 @@
 
 /* Card individual */
 .card {
-  background: var(--background-secondary);
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: .8rem;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 10px rgba(2, 1, 1, 0.44);
   cursor: pointer;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -60,7 +60,7 @@
   50% {
     box-shadow:
       0 0 0 3px var(--accent),
-      0 0 28px var(--accent);
+      0 0 18px var(--accent);
   }
 }
 

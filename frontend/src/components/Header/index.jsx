@@ -1,37 +1,43 @@
-// Header.jsx
-import { useState, useEffect } from "react";
+import { FiClock } from "react-icons/fi";
+import { HiMiniCalendarDateRange } from "react-icons/hi2";
 import styles from "./styles.module.css";
-import logo from "../../assets/logo_3.png";
-
-
-import { MdOutlineCalendarMonth } from "react-icons/md";
-import { FaRegClock } from "react-icons/fa";
+import { useNow, capitalize } from "../../hooks/useNow.js";
+import logo from "../../assets/logo_2.png";
 
 export function Header() {
-  const [time, setTime] = useState(new Date());
+  const now = useNow();
 
-  useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
+  const time = now.toLocaleTimeString("pt-BR", { hour12: false });
+  const date = now.toLocaleDateString("pt-BR");
+  const weekday = capitalize(
+    now.toLocaleDateString("pt-BR", { weekday: "long" })
+  );
 
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
-        <img src={logo} alt="SOS Manager" className={styles.logo} />
+        <img src={logo} alt="Logo" className={styles.logo} />
       </div>
-      <nav className={styles.nav}>
-        <div className={styles.timeContainer}>
-          <div className={styles.timeItem}>
-            <MdOutlineCalendarMonth />
-            <h3>{time.toLocaleDateString()}</h3>
-          </div>
-          <div className={styles.timeItem}>
-            <FaRegClock />
-            <p>{time.toLocaleTimeString()}</p>
+
+      <div className={styles.timeContainer}>
+        <div className={styles.timeItem}>
+          <FiClock />
+          <div className={styles.timeContent}>
+            <h3>{time}</h3>
+            <p>Horário</p>
           </div>
         </div>
-      </nav>
+
+        <span className={styles.timeDivider} />
+
+        <div className={styles.timeItem}>
+          <HiMiniCalendarDateRange />
+          <div className={styles.timeContent}>
+            <h3>{date}</h3>
+            <p>{weekday}</p>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

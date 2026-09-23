@@ -14,7 +14,7 @@ import { OccurrencesTab } from "./Pages/admin/occurrences";
 import { Login } from "./Pages/auth/Login";
 import { Home } from "./Pages/sos/SosList";
 import { SosDetail } from "./Pages/sos/SosDetail";
-import { Dashboard } from "./Pages/dashboard";
+import { Dashboard } from "./Pages/Dashboard";
 import { MapView } from "./Pages/mapview";
 import { startDispatchScheduler } from "./services/supabase/dispatchScheduler";
 

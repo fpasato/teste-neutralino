@@ -91,9 +91,17 @@ export function FitBounds({
     ) {
       map.setView([focusOnOccurrence.latitude, focusOnOccurrence.longitude], 15);
     } else {
-      const bounds = occurrences
-        .filter((o) => o.latitude != null && o.longitude != null)
-        .map((o) => [o.latitude, o.longitude]);
+      let targetOccurrences = occurrences.filter(
+        (o) => (o.status === "active" || o.status === "unresolved") && o.latitude != null && o.longitude != null
+      );
+
+      if (targetOccurrences.length === 0) {
+        targetOccurrences = occurrences.filter(
+          (o) => o.status === "in_progress" && o.latitude != null && o.longitude != null
+        );
+      }
+
+      const bounds = targetOccurrences.map((o) => [o.latitude, o.longitude]);
 
       if (shouldFitBounds && bounds.length > 0) {
         map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });

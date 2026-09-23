@@ -1,19 +1,26 @@
-/* ============================================================
-   Container / Header
-   ============================================================ */
+/* ================================
+   Container principal
+   ================================ */
 .container {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  padding: 1rem;
-  box-sizing: border-box;
   background-color: var(--background);
   color: var(--text);
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
+/* ================================
+   Header
+   ================================ */
 .header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .header h2 {
@@ -22,62 +29,65 @@
   gap: 0.5rem;
   margin: 0;
   font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
 .header small {
-  color: var(--text-secondary);
+  color: var(--text-muted);
   font-size: 0.8rem;
 }
 
-/* ============================================================
-   Toolbar (busca + filtros + botão)
-   ============================================================ */
+/* ================================
+   Toolbar
+   ================================ */
 .toolbar {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 1rem;
   flex-shrink: 0;
-}
-
-/* Base compartilhada de input/select */
-.searchInput,
-.filterSelect {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  outline: none;
-  transition: border-color 0.15s, background-color 0.15s;
 }
 
 .searchInput {
   flex: 1;
   min-width: 220px;
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  color: var(--text);
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .searchInput::placeholder {
   color: var(--text-muted);
 }
 
-.searchInput:focus,
-.filterSelect:focus {
+.searchInput:focus {
+  outline: none;
   border-color: var(--accent);
-  background-color: var(--surface-hover);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-/* Selects de região/município */
 .filterSelect {
-  min-width: 180px;
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  color: var(--text);
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.4rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 0.65rem center;
-  padding-right: 2rem;
+  transition: border-color 0.15s ease;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .filterSelect:disabled {
@@ -86,99 +96,112 @@
   background-color: var(--background-secondary);
 }
 
-.filterSelect option {
-  background-color: var(--surface);
-  color: var(--text);
-}
-
-/* Botão primário */
 .primaryButton {
   background-color: var(--accent);
   color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border-radius: 0.4rem;
   font-size: 0.875rem;
-  white-space: nowrap;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
 .primaryButton:hover {
-  background-color: #b81d1d;
+  background-color: var(--accent-hover);
 }
 
 .primaryButton:active {
-  transform: scale(0.98);
+  transform: translateY(1px);
 }
 
-/* ============================================================
-   Stats
-   ============================================================ */
+/* ================================
+   Cards de estatística
+   ================================ */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 0.75rem;
   margin-bottom: 1rem;
-  border-radius: 8px;
-  background-color: var(--surface);
   flex-shrink: 0;
 }
 
 .statItem {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid var(--border);
+  gap: 0.75rem;
   background-color: var(--surface);
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  white-space: nowrap;
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  padding: 0.75rem 0.9rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.statItem > svg {
-  flex-shrink: 0;
+.statItem:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px) translateX(2px);
 }
 
-.statIcon svg {
-  width: 2rem;
-  height: 2rem;
-  color: var(--accent);
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
 }
 
 .statContent {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  line-height: 1;
+  min-width: 0;
 }
 
 .statContent span {
-  font-size: 1.4rem;
-  font-weight: 300;
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--text);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
 }
 
 .statContent small {
-  font-size: 0.7rem;
-  color: var(--text-secondary);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-/* ============================================================
-   Grid principal (tabela + mapa)
-   ============================================================ */
+/* ================================
+   Mensagem de erro
+   ================================ */
+.errorMessage {
+  background-color: var(--accent-soft);
+  color: var(--accent-hover);
+  border: 1px solid var(--accent);
+  padding: 0.6rem 0.85rem;
+  border-radius: 0.4rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+/* ================================
+   Grid principal: tabela + mapa
+   ================================ */
 .contentGrid {
   display: grid;
-  grid-template-columns: 1fr 0.5fr;
+  grid-template-columns: 1fr minmax(280px, 380px);
   gap: 1rem;
   flex: 1;
   min-height: 0;
 }
 
 .tableColumn {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -187,237 +210,317 @@
 
 .mapColumn {
   min-height: 0;
-  min-width: 0;
-  border-radius: 6px;
   overflow: hidden;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.4rem;
   background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
 }
 
-/* ============================================================
-   Tabela
-   ============================================================ */
+/* ================================
+   Wrapper da tabela
+   ================================ */
 .tableWrapper {
+  border-radius: 0.5rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  overflow: auto;
   flex: 1;
   min-height: 0;
-  overflow: auto;
-  border-radius: 6px;
-  background-color: var(--surface);
 }
 
+.tableWrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ================================
+   Tabela
+   ================================ */
 .table {
   width: 100%;
-  min-width: 600px;
   border-collapse: collapse;
   table-layout: auto;
-  border: 1px solid var(--border);
+  min-width: 640px;
 }
 
 .table th,
 .table td {
-  padding: 0.65rem 0.5rem;
-  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--border-light);
   text-align: left;
   white-space: nowrap;
   font-size: 0.875rem;
-  vertical-align: middle;
+  color: var(--text-secondary);
+}
+
+.table th:last-child,
+.table td:last-child {
+  white-space: nowrap;
 }
 
 .table th {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: var(--surface);
   color: var(--text-secondary);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  background-color: var(--background-secondary);
+  z-index: 1;
 }
 
-/* Centraliza as colunas 3, 4, 5 e últimas */
-.table th:nth-child(n + 3),
-.table td:nth-child(n + 3) {
-  text-align: center;
+.table tbody tr {
+  transition: background-color 0.12s ease;
+}
+
+.table tbody tr:hover {
+  background-color: var(--surface-hover);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .nameCell {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text);
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.actionsCell {
-  text-align: center;
-  vertical-align: middle;
-}
-
-/* ============================================================
-   Badges / Botões de linha
-   ============================================================ */
-.roleBadge,
-.statusBadge {
+/* ================================
+   Badges (função e status)
+   ================================ */
+.roleBadge {
   display: inline-block;
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
   font-size: 0.7rem;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   white-space: nowrap;
-  background-color: var(--active);
-  color: #fff;
+  border: 1px solid transparent;
 }
 
 .roleBadge[data-role="admin"] {
-  background-color: #8b5cf6;
-  color: #fff;
+  background-color: var(--accent-soft);
+  color: var(--accent-hover);
+  border-color: var(--accent);
 }
 
 .roleBadge[data-role="supervisor"] {
-  background-color: #c0c243c0;
-  color: #fff;
+  background-color: var(--progress-soft);
+  color: var(--progress);
+  border-color: var(--progress);
+}
+
+.roleBadge[data-role="attendant"] {
+  background-color: var(--active-soft);
+  color: var(--active);
+  border-color: var(--active);
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.statusBadge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
 }
 
 .statusBadge[data-active="true"] {
-  background-color: #13b821;
-  color: #ffffff;
+  background-color: var(--finished-soft);
+  color: var(--finished);
+  border-color: var(--finished);
 }
 
 .statusBadge[data-active="false"] {
-  background-color: #ff4444;
-  color: #ffffff;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
-.linkButton {
-  display: inline-block;
-  margin: 0 0.15rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  border: 1px solid var(--border);
+/* ================================
+   Célula de ações + menu
+   ================================ */
+.actionsCell {
+  text-align: right;
+  width: 60px;
+}
+
+.menuTrigger {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  padding: 0.3rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.menuTrigger:hover {
   background-color: var(--surface-hover);
   color: var(--text);
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: border-color 0.15s, color 0.15s;
-}
-
-.linkButton:hover {
-  border-color: var(--text-secondary);
-}
-
-.linkButton[data-danger="true"] {
-  color: var(--cancelled);
-}
-
-.linkButton[data-danger="true"]:hover {
-  border-color: var(--cancelled);
+  border-color: var(--border-light);
 }
 
 .noAction {
   color: var(--text-muted);
-  font-size: 0.75rem;
-}
-
-/* ============================================================
-   Estados auxiliares
-   ============================================================ */
-.emptyState {
-  padding: 2rem;
-  text-align: center;
   font-style: italic;
-  color: var(--text-muted);
 }
 
-.errorMessage {
-  margin: 0 0 0.75rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
+.menuDropdown {
+  position: fixed;
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-md);
+  padding: 0.3rem;
+  z-index: 999;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  animation: fadeIn 0.12s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.35rem;
   font-size: 0.85rem;
-  color: var(--cancelled);
-  background-color: rgba(220, 105, 38, 0.08);
-  border: 1px solid rgba(220, 105, 38, 0.25);
-  flex-shrink: 0;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color 0.12s ease, color 0.12s ease;
 }
 
-/* ============================================================
-   Responsivo
-   ============================================================ */
-@media (max-width: 900px) {
+.menuItem svg {
+  font-size: 1rem;
+}
+
+.menuItem:hover {
+  background-color: var(--surface-hover);
+  color: var(--text);
+}
+
+.menuItem[data-danger="true"] {
+  color: var(--accent);
+}
+
+.menuItem[data-danger="true"]:hover {
+  background-color: var(--accent-soft);
+  color: var(--accent-hover);
+}
+
+/* ================================
+   Estado vazio
+   ================================ */
+.emptyState {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2.5rem 1rem;
+  font-style: italic;
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ================================
+   Responsividade
+   ================================ */
+@media (max-width: 1024px) {
   .contentGrid {
     grid-template-columns: 1fr;
   }
 
   .mapColumn {
-    min-height: 300px;
+    height: 320px;
   }
 }
-.actionsMenu {
-  position: relative;
-  display: inline-block;
-}
 
-.menuTrigger {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
-  color: var(--text-secondary, #555);
-  display: flex;
-  align-items: center;
-}
+@media (max-width: 640px) {
+  .container {
+    padding: 0.75rem;
+  }
 
-.menuTrigger:hover {
-  background: var(--bg-hover, #f0f0f0);
-}
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-.menuDropdown {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  margin-top: 4px;
-  background: var(--bg-surface, #fff);
-  border: 1px solid var(--border-color, #e0e0e0);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  min-width: 140px;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+  .searchInput,
+  .filterSelect,
+  .primaryButton {
+    width: 100%;
+  }
 
-.menuItem {
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-primary, #222);
-}
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
 
-.menuItem:hover {
-  background: var(--bg-hover, #f5f5f5);
-}
+  .statContent span {
+    font-size: 1.15rem;
+  }
 
-.menuItem[data-danger="true"] {
-  color: var(--danger, #d33);
-}
+  .table th,
+  .table td {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.8rem;
+  }
 
-
-/* Limita a coluna de nome */
-.table th:first-child,
-.table td:first-child {
-  max-width: 220px;      
-  width: 220px;
-}
-
-.nameCell {
-  font-weight: 500;
-  color: var(--text);
-  max-width: 220px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  .nameCell {
+    max-width: 140px;
+  }
 }

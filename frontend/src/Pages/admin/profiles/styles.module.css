@@ -1,4 +1,6 @@
-
+/* ================================
+   Container principal
+   ================================ */
 .container {
   display: flex;
   flex-direction: column;
@@ -11,112 +13,9 @@
   margin: 0 auto;
 }
 
-.searchWrapper {
-  margin-bottom: 1rem;
-  flex-shrink: 0;
-}
-
-.searchInput {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-  width: 100%;
-  font-size: 0.9rem;
-  box-sizing: border-box;
-  border-radius: 0.4rem;
-}
-
-.searchInput::placeholder {
-  color: var(--text-muted);
-}
-
-.emptyState {
-  color: var(--text-muted);
-  text-align: center;
-  padding: 2rem;
-  font-style: italic;
-}
-
-.tableWrapper {
-  border-radius: 6px;
-  background-color: var(--surface);
-  overflow-y: auto;
-  overflow-x: hidden;
-  flex: 1;
-  min-height: 0;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: auto;
-  min-width: 500px;
-  border-radius: 0.4rem;
-  border: 1px solid var(--border)
-}
-
-.table th,
-.table td {
-  padding: 0.65rem 0.5rem;
-  border-bottom: 1px solid var(--border);
-  text-align: left;
-  white-space: nowrap;
-  font-size: 0.875rem;
-}
-
-.table th:last-child,
-.table td:last-child {
-  white-space: normal;
-  word-break: break-word;
-}
-
-.table th {
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  position: sticky;
-  top: 0;
-  background-color: var(--surface);
-  z-index: 1;
-  cursor: default;
-}
-
-.sortable {
-  cursor: pointer;
-  user-select: none;
-}
-
-.sortable:hover {
-  color: var(--text);
-}
-
-.nameCell {
-  font-weight: 500;
-  color: var(--text);
-}
-
-.sosCell {
-  font-weight: 600;
-  color: var(--accent);
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  background-color: var(--background);
-  color: var(--text);
-  padding: 1rem;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-/* ---- CARDS DE ESTATÍSTICA ---- */
+/* ================================
+   Cards de estatística
+   ================================ */
 .statsCards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -127,12 +26,19 @@
 
 .statCard {
   background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.4rem;
-  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  border-radius: 0.5rem;
+  padding: 0.85rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.statCard:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .statLabel {
@@ -147,62 +53,86 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text);
+  font-variant-numeric: tabular-nums;
 }
 
-/* ---- BUSCA + CHIPS ---- */
+/* ================================
+   Toolbar: busca + chips
+   ================================ */
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
 .searchWrapper {
-  margin-bottom: 0.75rem;
   flex-shrink: 0;
 }
 
 .searchInput {
   background-color: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-light);
   color: var(--text);
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.4rem;
   width: 100%;
   font-size: 0.9rem;
   box-sizing: border-box;
-  border-radius: 0.4rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .searchInput::placeholder {
   color: var(--text-muted);
 }
 
+.searchInput:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
 .filterChips {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
-  flex-shrink: 0;
   flex-wrap: wrap;
 }
 
 .chip,
 .chipActive {
   background-color: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-light);
   color: var(--text-secondary);
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .chip:hover {
   color: var(--text);
-  border-color: var(--text-secondary);
+  border-color: var(--border);
+  background-color: var(--surface-hover);
 }
 
 .chipActive {
   background-color: var(--accent);
-  color: var(--text);
+  color: #fff;
   border-color: var(--accent);
 }
 
+.chipActive:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* ================================
+   Estado vazio / carregando
+   ================================ */
 .emptyState {
   color: var(--text-muted);
   text-align: center;
@@ -210,29 +140,51 @@
   font-style: italic;
 }
 
-/* ---- TABELA ---- */
+/* ================================
+   Wrapper da tabela (scroll)
+   ================================ */
 .tableWrapper {
-  border-radius: 6px;
+  border-radius: 0.5rem;
   background-color: var(--surface);
-  overflow-y: auto;
-  overflow-x: hidden;
+  border: 1px solid var(--border-light);
+  overflow: auto;
   flex: 1;
   min-height: 0;
+  box-shadow: var(--shadow-sm);
 }
 
+.tableWrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ================================
+   Tabela
+   ================================ */
 .table {
   width: 100%;
   border-collapse: collapse;
   table-layout: auto;
   min-width: 500px;
-  border-radius: 0.4rem;
-  border: 1px solid var(--border)
 }
 
 .table th,
 .table td {
-  padding: 0.65rem 0.5rem;
-  border-bottom: 1px solid var(--border);
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--border-light);
   text-align: left;
   white-space: nowrap;
   font-size: 0.875rem;
@@ -247,36 +199,63 @@
 .table th {
   color: var(--text-secondary);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   position: sticky;
   top: 0;
-  background-color: var(--surface);
+  background-color: var(--background-secondary);
   z-index: 1;
   cursor: default;
+  user-select: none;
 }
 
+.table tbody tr {
+  transition: background-color 0.12s ease;
+}
+
+.table tbody tr:hover {
+  background-color: var(--surface-hover);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Colunas ordenáveis */
 .sortable {
   cursor: pointer;
   user-select: none;
 }
 
 .sortable:hover {
-  color: var(--text);
+  color: var(--accent);
 }
 
+/* ================================
+   Células específicas
+   ================================ */
 .nameCell {
   font-weight: 500;
   color: var(--text);
 }
 
 .sosCell {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
-/* ---- ÚLTIMO SOS ---- */
+.emailCell {
+  color: var(--text-secondary);
+  word-break: break-all;
+  max-width: 220px;
+}
+
+/* ================================
+   Último SOS (badge + meta)
+   ================================ */
 .lastSosCell {
   display: flex;
   flex-direction: column;
@@ -290,7 +269,7 @@
   border-radius: 999px;
   font-size: 0.7rem;
   font-weight: 600;
-  color: var(--background);
+  border: 1px solid transparent;
   white-space: nowrap;
 }
 
@@ -304,8 +283,36 @@
   font-style: italic;
 }
 
-.emailCell {
-  color: var(--text-secondary);
-  word-break: break-all;
-  max-width: 220px;
+/* ================================
+   Responsividade
+   ================================ */
+@media (max-width: 900px) {
+  .statsCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .statsCards {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .statValue {
+    font-size: 1.25rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .emailCell {
+    max-width: 140px;
+  }
 }

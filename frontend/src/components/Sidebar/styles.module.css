@@ -77,8 +77,9 @@
 }
 
 .navLink:hover:not(:disabled) {
-  background-color: var(--surface-hover);
+  background-color: #e8c3c3;
   color: var(--text);
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 
 .navLink:active:not(:disabled) {
@@ -92,7 +93,7 @@
 
 /* Estado ativo (adicione className ativa via useLocation quando quiser) */
 .navLink.active {
-  background-color: var(--surface-hover);
+  background-color: #ff0000;
   color: var(--text);
   box-shadow: inset 3px 0 0 var(--accent);
 }
@@ -109,7 +110,7 @@
 .navLink:disabled:hover,
 .navLink.disabled:hover {
   background-color: transparent;
-  color: var(--text-muted);
+  color: #fff;
 }
 
 /* ============================================================

@@ -263,7 +263,7 @@
                     <Chart
                       type="donut"
                       width="100%"
-                      height={Math.min(140, window.innerHeight * 0.2)}
+                      height={Math.min(220, window.innerHeight * 0.2)}
                       series={donutData.map((d) => d.value)}
                       options={buildDonutChartOptions(donutData)}
                     />

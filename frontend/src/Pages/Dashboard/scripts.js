@@ -85,16 +85,16 @@ export function buildDonutChartOptions(donutData) {
     plotOptions: {
       pie: {
         donut: {
-          size: "65%",
+          size: "70%",
           labels: {
             show: true,
             total: {
               show: true,
               label: "Total",
-              color: "#ffffff",
+              color: "#000000",
             },
             value: {
-              color: "#ffffff",
+              color: "#000000",
             },
           },
         },

@@ -1,241 +1,416 @@
 .container {
-  background: var(--background, #1e293b);
-  border-bottom: 1px solid var(--border, #334155);
-  padding: 6px 12px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  flex-shrink: 0;
+  width: 100%;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
 }
 
 .body {
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
   flex-wrap: nowrap;
-  align-items: flex-start;
-  gap: 10px;
-  padding: .6rem;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 3px;
-  padding-right: 10px;
-  border-right: 1px solid var(--border, #334155);
-  flex-shrink: 0;
-}
-
-.section:last-child {
-  border-right: none;
-  padding-right: 0;
-}
-
-.sectionLabel {
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--text-muted, #94a3b8);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  line-height: 1;
-}
-
-/* alturas uniformes pra tudo alinhar numa régua só */
-.searchInput,
-.selectInput,
-.dateInput,
-.statusChip,
-.clearButton {
-  height: 28px;
+  gap: 12px;
+  padding: 12px 16px;
+  width: 100%;
   box-sizing: border-box;
-  font-size: 11px;
-  line-height: 1;
-}
-
-.searchInput,
-.selectInput,
-.dateInput {
-  padding: 0 8px;
-  border: 1px solid var(--border, #334155);
-  border-radius: 4px;
-  color: var(--text, #e2e8f0);
-  background: var(--surface, #0f172a);
-  transition: border-color 0.15s ease;
-}
-
-.searchInput:focus,
-.selectInput:focus,
-.dateInput:focus {
-  outline: none;
-  border-color: var(--active, #3b82f6);
-}
-
-.selectInput {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2364748B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  padding-right: 22px;
-  cursor: pointer;
-}
-
-.selectInput:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* ---- Status ---- */
-.sectionStatus {
-  flex: 0 1 auto;
-  min-width: 0;
-}
-
-.statusGrid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 4px;
-}
-
-.statusChip {
-  padding: 0 10px;
-  border-radius: 4px;
-  border: 1px solid var(--border, #334155);
-  background: var(--surface, #0f172a);
-  color: var(--text-secondary, #cbd5e1);
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.15s ease;
-}
-
-.statusChip:hover {
-  border-color: var(--text-muted, #94a3b8);
-  color: var(--text, #e2e8f0);
-}
-
-.chipActive {
-  background: var(--active, #3b82f6);
-  border-color: var(--active, #3b82f6);
-  color: #fff;
-}
-
-.chipActive:hover {
-  border-color: var(--active, #3b82f6);
-  color: #fff;
-}
-
-/* ---- Período ---- */
-.sectionPeriod {
-  flex-shrink: 0;
-}
-
-.dateGroup {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.dateField {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.dateField .dateInput {
-  width: 80px;
-}
-
-.dateLabel {
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--text-muted, #94a3b8);
-  white-space: nowrap;
-}
-
-/* ---- Região / Cidade / Ordenar ---- */
-.sectionRegion,
-.sectionCity,
-.sectionSort {
-  flex-shrink: 0;
-}
-
-.sectionRegion .selectInput,
-.sectionRegion .dateInput {
-  width: 110px;
-}
-
-.sectionCity .selectInput {
-  width: 100px;
-}
-
-.sectionSort .selectInput {
-  width: 120px;
-}
-
-/* ---- Limpar ---- */
-.sectionClear {
-  flex-shrink: 0;
-  border-right: none;
-}
-
-.clearButton {
-  padding: 0 10px;
-  background: none;
-  border: 1px solid var(--border, #334155);
-  border-radius: 4px;
-  color: var(--text-muted, #94a3b8);
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.15s ease;
-}
-
-.clearButton:hover {
-  background: var(--cancelled, #b91c1c);
-  border-color: var(--cancelled, #b91c1c);
-  color: #fff;
-}
-
-.filterCount {
-  background: rgba(255, 255, 255, 0.15);
-  color: inherit;
-  font-size: 9px;
-  padding: 1px 5px;
-  border-radius: 3px;
-  font-weight: 700;
 }
 
 .filterHeader {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  margin-right: 10px;
-  font-size: 1rem;
-  color: var(--text-secondary);
+  gap: 8px;
+  flex-shrink: 0;
+  padding-right: 12px;
+  border-right: 1px solid var(--border-light);
+  align-self: stretch;
+}
+
+.filterHeader h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--text);
+  white-space: nowrap;
 }
 
 .headerCount {
-  background: rgba(255, 255, 255, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  line-height: 1;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.sectionLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sectionStatus {
+  flex: 2 1 0;
+  min-width: 0;
+}
+
+.statusGrid {
+  display: flex;
+  gap: 5px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.statusChip {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 7px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text-secondary);
+  background: var(--background-secondary);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.statusChip:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-light);
+}
+
+.statusChip:active {
+  transform: scale(0.97);
+}
+
+.chipActive {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.chipActive:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent-hover);
+  color: var(--accent-hover);
+}
+
+.sectionPeriod {
+  flex: 1.6 1 0;
+  min-width: 0;
+}
+
+.dateGroup {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.dateField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.dateLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.dateInput {
+  width: 100%;
+  min-width: 0;
+  padding: 7px 8px;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.dateInput::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.dateInput:hover:not(:disabled) {
+  border-color: var(--border);
+}
+
+.dateInput:focus {
+  border-color: var(--active);
+  box-shadow: 0 0 0 3px var(--active-soft);
+}
+
+.dateInput:disabled {
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.sectionRegion,
+.sectionCity {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.sectionSort {
+  flex: 1.2 1 0;
+  min-width: 0;
+}
+
+.selectInput {
+  width: 100%;
+  min-width: 0;
+  padding: 7px 26px 7px 8px;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--text);
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23383e48' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 7px center;
+  background-size: 12px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.selectInput:hover:not(:disabled) {
+  border-color: var(--border);
+}
+
+.selectInput:focus {
+  border-color: var(--active);
+  box-shadow: 0 0 0 3px var(--active-soft);
+}
+
+.selectInput:disabled {
+  background-color: var(--background-secondary);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.sectionView {
+  flex: 0 0 auto;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  background: var(--background-secondary);
+  border-radius: 9px;
+}
+
+.viewButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 26px;
+  font-size: 16px;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.viewButton:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.viewActive {
+  color: var(--accent);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.viewActive:hover {
+  color: var(--accent);
+  background: var(--surface);
+}
+
+.sectionClear {
+  flex: 0 0 auto;
+}
+
+.clearButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, transform 0.1s ease;
+}
+
+.clearButton:hover {
   color: #fff;
-  font-size: 0.8rem;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.clearButton:active {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: scale(0.98);
+}
+
+.filterCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  line-height: 1;
+}
+
+.clearButton:hover .filterCount {
+  color: var(--accent);
+  background: #fff;
+}
+
+:global(.react-datepicker-wrapper) {
+  width: 100%;
+  min-width: 0;
+}
+
+:global(.react-datepicker__input-container) {
+  width: 100%;
+  min-width: 0;
+}
+
+:global(.react-datepicker) {
+  font-family: inherit;
+  font-size: 13px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+:global(.react-datepicker__header) {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-light);
+  padding-top: 10px;
+}
+
+:global(.react-datepicker__current-month),
+:global(.react-datepicker-time__header) {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+:global(.react-datepicker__day-name) {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+:global(.react-datepicker__day) {
+  border-radius: 8px;
+  color: var(--text-secondary);
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+:global(.react-datepicker__day:hover) {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 8px;
+}
+
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--keyboard-selected) {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+}
+
+:global(.react-datepicker__day--selected:hover),
+:global(.react-datepicker__day--keyboard-selected:hover) {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+:global(.react-datepicker__day--today) {
+  color: var(--accent);
   font-weight: 700;
 }
 
+:global(.react-datepicker__day--disabled) {
+  color: var(--border);
+}
 
-.viewButton {
-  font-size:1.4rem;
+:global(.react-datepicker__navigation-icon::before) {
+  border-color: var(--text-muted);
+}
 
-  background: none;
-  border: none;
-  cursor: pointer;
+:global(.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before) {
+  border-color: var(--accent);
+}
 
-  color: var(--text-muted, #94a3b8);
-
-  & :hover {
-    color: var(--text, #e2e8f0);
-  }
+:global(.react-datepicker__triangle) {
+  display: none;
 }

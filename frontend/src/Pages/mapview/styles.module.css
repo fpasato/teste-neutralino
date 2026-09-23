@@ -281,6 +281,7 @@
 .mapTypeToggle {
   display: flex;
   background-color: var(--background-secondary);
+  color: var(--text);
   border-radius: 8px;
   padding: 3px;
   gap: 4px;
@@ -310,7 +311,7 @@
 
 .mapTypeButtonActive {
   background-color: var(--surface-hover);
-  color: #ffffff;
+  color: #000000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
