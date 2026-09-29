@@ -1,15 +1,72 @@
-# neutralinojs-minimal
+# SOS Manager
 
-The default template for a Neutralinojs app. It's possible to use your favorite frontend framework by using [these steps](https://neutralino.js.org/docs/getting-started/using-frontend-libraries).
+Sistema de Gerenciamento de Emergências - Aplicativo desktop desenvolvido com NeutralinoJS e React para gerenciamento de chamados de emergência, atendentes e visualização em mapa.
 
-## Contributors
+## Características
 
-[![Contributors](https://contrib.rocks/image?repo=neutralinojs/neutralinojs-minimal)](https://github.com/neutralinojs/neutralinojs-minimal/graphs/contributors)
+- Interface React moderna com Vite
+- Autenticação de usuários e gerenciamento de atendentes
+- Dashboard administrativo com estatísticas
+- Visualização de emergências em mapa interativo
 
-## License
+## Pré-requisitos
 
-[MIT](LICENSE)
+- Node.js (para build do frontend)
+- NeutralinoJS CLI instalado globalmente:
+  ```bash
+  npm install -g @neutralinojs/neu
+  ```
 
-## Icon credits
+## Instruções de Build
 
-- `trayIcon.png` - Made by [Freepik](https://www.freepik.com) and downloaded from [Flaticon](https://www.flaticon.com)
+1. **Instalar dependências do frontend:**
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+2. **Build do frontend:**
+   ```bash
+   npm run build
+   ```
+
+3. **Voltar para a pasta principal:**
+   ```bash
+   cd ..
+   ```
+
+4. **Build do aplicativo Neutralino:**
+   ```bash
+  neu build --embed-resources
+   ```
+
+O executável final será gerado na pasta `dist/`.
+
+## Desenvolvimento
+
+Para desenvolvimento local:
+
+```bash
+# Terminal 1 - Frontend dev server
+cd frontend
+npm run dev
+
+# Terminal 2 - Neutralino dev mode
+neu run
+```
+
+## Estrutura do Projeto
+
+```
+sos-manager-neu/
+├── frontend/           # Aplicação React
+│   ├── src/           # Código fonte
+│   └── package.json   # Dependências do frontend
+├── resources/         # Recursos estáticos
+├── neutralino.config.json  # Configuração do Neutralino
+└── update.json        # Manifesto de atualizações
+```
+
+## Licença
+
+MIT
