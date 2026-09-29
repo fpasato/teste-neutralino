@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import "leaflet/dist/leaflet.css";
 import "./lib/leaflet-icons";
+
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
     <App />

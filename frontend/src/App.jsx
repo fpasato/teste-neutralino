@@ -1,9 +1,13 @@
 import "./App.css";
+
 import { HashRouter, Routes, Route } from "react-router-dom";
+
 import { useEffect } from "react";
 
 import { AuthProvider } from "./contexts/AuthContext";
+
 import { PrivateRoute } from "./components/PrivateRoute";
+
 import { AppLayout } from "./components/AppLayout";
 
 import { AuditTab } from "./Pages/admin/audit";
@@ -12,17 +16,31 @@ import { AttendantsTab } from "./Pages/admin/attendants";
 import { OccurrencesTab } from "./Pages/admin/occurrences";
 
 import { Login } from "./Pages/auth/Login";
+
 import { Home } from "./Pages/sos/SosList";
 import { SosDetail } from "./Pages/sos/SosDetail";
+
 import { Dashboard } from "./Pages/Dashboard";
 import { MapView } from "./Pages/mapview";
+
 import { startDispatchScheduler } from "./services/supabase/dispatchScheduler";
+import { verificarAtualizacao } from "./services/updater";
 
 function App() {
+
+  useEffect(() => {
+    Neutralino.init();
+
+    Neutralino.events.on("ready", () => {
+      verificarAtualizacao();
+    });
+  }, []);
+
   return (
     <AuthProvider>
       <HashRouter>
         <Routes>
+
           <Route path="/" element={<Login />} />
 
           {/* Rotas que qualquer atendente logado e ativo pode acessar */}
@@ -52,6 +70,7 @@ function App() {
             <Route path="/attendants" element={<AttendantsTab />} />
             <Route path="/sos" element={<OccurrencesTab />} />
           </Route>
+
         </Routes>
       </HashRouter>
     </AuthProvider>

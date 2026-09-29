@@ -18,7 +18,8 @@
     "os.*",
     "debug.log",
     "window.*",
-    "events.*"
+    "events.*",
+    "filesystem.writeBinaryFile"
   ],
   "globalVariables": {},
   "modes": {
